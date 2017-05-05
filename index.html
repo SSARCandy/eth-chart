@@ -1,0 +1,71 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+<script src="https://npmcdn.com/chart.js@latest/dist/Chart.bundle.min.js"></script>
+<script src="https://npmcdn.com/Chart.Zoom.js@latest/Chart.Zoom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+
+
+
+<canvas id="myChart"></canvas>
+
+
+<script>
+    var ctx = document.getElementById("myChart");
+
+    $.ajax('./history.json').done(function (data) {
+        raw = JSON.parse(data);
+
+        time = raw.map(item => item.time);
+        buy = raw.map(item => item.buy / 100000);
+        sell = raw.map(item => item.sell / 100000);
+
+
+        var data = {
+            labels: time,
+            datasets: [{
+                label: "Buy",
+                fill: true,
+                data: buy,
+                backgroundColor: "rgba(200,0,0,0.1)",
+                borderColor: "rgba(200,0,0,1)",
+            }, {
+                label: "Sell",
+                fill: true,
+                data: sell,
+                backgroundColor: "rgba(0,200,0,0.3)",
+                borderColor: "rgba(0,200,0,1)",
+            }]
+        };
+
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                pan: {
+                    enabled: true,
+                    mode: 'x'
+                },
+                zoom: {
+                    enabled: true,
+                    mode: 'x',
+                },
+                hover: {
+                    mode: 'label'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                scales: {
+                    xAxes: [{
+                        type: 'time',
+                    }]
+                },
+            }
+        });
+    });
+
+</script>
