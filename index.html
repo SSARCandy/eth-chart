@@ -14,12 +14,11 @@
 <script>
     var ctx = document.getElementById("myChart");
 
-    $.ajax('./history.json').done(function (data) {
-        raw = JSON.parse(data);
+    $.ajax('./history.json').done(function (raw) {
 
-        time = raw.map(item => item.time);
-        buy = raw.map(item => item.buy / 100000);
-        sell = raw.map(item => item.sell / 100000);
+        var time = raw.map(item => item.time);
+        var buy = raw.map(item => item.buy / 100000);
+        var sell = raw.map(item => item.sell / 100000);
 
 
         var data = {
