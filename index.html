@@ -10,17 +10,17 @@
 <h1 id="price" style="text-align: center;"></h1>
 <canvas id="myChart" width="800" height="300" style="max-width: 1600px; max-height:600px; margin: 0 auto;"></canvas>
 
-
 <script>
     $.ajax("http://localhost:3333/eth-realtime")
         .done((data) => {
             try {
                 data = JSON.parse(data);
-                $('#price')[0].innerHTML = `<div style="color:red">買價: ${data.raw_buy_price/100000}</div> <div style="color:green">賣價: ${data.raw_sell_price/100000}</div><div style="color:blue">差價: ${(data.raw_buy_price-data.raw_sell_price) / 100000}</div>`;
-
             }
             catch (err) { }
+            $('#price')[0].innerHTML = `<div style="color:red">買價: ${data.raw_buy_price / 100000}</div> <div style="color:green">賣價: ${data.raw_sell_price / 100000}</div><div style="color:blue">差價: ${(data.raw_buy_price - data.raw_sell_price) / 100000}</div>`;
         });
+</script>
+<script>
     var ctx = document.getElementById("myChart");
 
     $.ajax('./history.json').done(function (raw) {
