@@ -8,7 +8,7 @@
 
 
 <h1 id="price" style="text-align: center;"></h1>
-<canvas id="myChart" width="800" height="300" style="max-width: 1600px; max-height:600px; margin: 0 auto;"></canvas>
+<canvas id="myChart" width="800" height="200" style="max-width: 1600px; max-height:400px; margin: 0 auto;"></canvas>
 
 <script>
     $.ajax("http://exwd.csie.org:3333/eth-realtime")
@@ -55,6 +55,7 @@
             type: 'line',
             data: data,
             options: {
+                maintainAspectRatio: false,
                 responsive: true,
                 pan: {
                     enabled: true,
