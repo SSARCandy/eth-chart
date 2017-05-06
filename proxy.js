@@ -16,4 +16,6 @@ app.get('/eth-realtime', function (req, res) {
     });
 })
 
+app.use(express.static('static'));
+
 app.listen(3333)

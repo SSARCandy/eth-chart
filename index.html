@@ -29,7 +29,7 @@ getRealtimePrice();
 <script>
     var ctx = document.getElementById("myChart");
 
-    $.ajax('https://exwd.csie.org/eth-chart/history.json').done(function (raw) {
+    $.ajax('https://exwd.csie.org/eth/history.json').done(function (raw) {
         try {
             raw = JSON.parse(raw)
         }
