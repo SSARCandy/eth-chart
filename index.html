@@ -14,7 +14,7 @@
 setInterval(getRealtimePrice, 30000);
 
 function getRealtimePrice(){
-    $.ajax("http://exwd.csie.org:3333/eth-realtime")
+    $.ajax("https://exwd.csie.org/eth/eth-realtime")
         .done(function(data) {
             try {
                 data = JSON.parse(data);
@@ -29,7 +29,7 @@ getRealtimePrice();
 <script>
     var ctx = document.getElementById("myChart");
 
-    $.ajax('./history.json').done(function (raw) {
+    $.ajax('https://exwd.csie.org/eth-chart/history.json').done(function (raw) {
         try {
             raw = JSON.parse(raw)
         }
