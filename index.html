@@ -43,12 +43,14 @@ getRealtimePrice();
         var data = {
             labels: time,
             datasets: [{
+                pointRadius: 0,
                 label: "Buy",
                 fill: true,
                 data: buy,
                 backgroundColor: "rgba(200,0,0,0.1)",
                 borderColor: "rgba(200,0,0,1)",
             }, {
+                pointRadius: 0,
                 label: "Sell",
                 fill: true,
                 data: sell,
