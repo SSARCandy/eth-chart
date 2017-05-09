@@ -14,7 +14,7 @@
 setInterval(getRealtimePrice, 30000);
 
 function getRealtimePrice(){
-    $.ajax("https://exwd.csie.org/eth/eth-realtime")
+    $.ajax("https://exwd.csie.org/eth/btc-realtime")
         .done(function(data) {
             try {
                 data = JSON.parse(data);
@@ -29,7 +29,7 @@ getRealtimePrice();
 <script>
     var ctx = document.getElementById("myChart");
 
-    $.ajax('https://exwd.csie.org/eth/history.json').done(function (raw) {
+    $.ajax('https://exwd.csie.org/eth/btc_history.json').done(function (raw) {
         try {
             raw = JSON.parse(raw)
         }
