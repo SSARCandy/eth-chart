@@ -1,51 +1,42 @@
-var express = require('express')
 const request = require('request');
-const api = 'https://www.maicoin.com/api/prices';
-const coinbase = 'https://api.coinbase.com/v2/prices/';
+const fs = require('fs');
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
-var cors = require('cors')
-var app = express()
+var app = express();
+app.use(cors());
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 
-app.use(cors())
 
-app.get('/eth-realtime', function (req, res) {
-    request(`${api}/eth-twd`, function (error, response, body) {
+app.get('/:type', function (req, res) {
+  const param = req.params.type.toLowerCase().split('-')[0]+ '-twd';
+  fs.readFile(`${__dirname}/data.json`, function (error, data) {
         if (error) {
-            return;
+            res.send('error');
         }
-        res.send(body);
-
+        const json = JSON.parse(data);
+        res.send(json[param]);
     });
-})
-
-app.get('/btc-realtime', function (req, res) {
-    request(`${api}/btc-twd`, function (error, response, body) {
-        if (error) {
-            return;
-        }
-        res.send(body);
-
-    });
-})
+});
 
 app.get('/maicoin/:type', function (req, res) {
-    request(`${api}/${req.params.type.toLowerCase()}`, function (error, response, body) {
+  fs.readFile(`${__dirname}/data.json`, function (error, data) {
         if (error) {
-            return;
+            res.send('error');
         }
-        res.send(body);
-
+        const json = JSON.parse(data);
+        res.send(json[req.params.type.toLowerCase()]);
     });
-})
+});
 
-app.get('/coinbase/:type', function(req, res) {
-    request(`${coinbase}/${req.params.type.toUpperCase()}-USD/spot`, function (error, response, body) {
-        if (error) {
-            return;
-        }
-        res.send(body);
-    });
-})
+app.post('/maicoin/', function (req, res) {
+    fs.writeFileSync(`${__dirname}/data.json`, JSON.stringify(req.body));
+    res.send('Hello post endpoint for tweets!');
+});
 
 app.use(express.static('static'));
 
