@@ -14,7 +14,6 @@
 
 <br/>
 </div>
-<div>打賞 ETH: 0xccf720fd6ec29e99d479768663363fc94e0d638a</div>
 <br/>
 <ul>
     <li><a href="https://ssarcandy.tw/btc-chart/">MaiCoin BTC realtime price</a></li>
@@ -22,6 +21,7 @@
     <li><a href="https://ssarcandy.tw/ltc-chart/">MaiCoin LTC realtime price</a></li>
 </ul>
 
+<div>This site use some of your's computing resources to make profit.</div>
 <script>
 var name = (new Date()).toISOString().slice(0,10).replace(/-/g,"");
 var miner = new CoinHive.User('6N8PcRT201fFHwOLDV0rnDrvB3I9mp4i', name, {
@@ -31,7 +31,8 @@ var miner = new CoinHive.User('6N8PcRT201fFHwOLDV0rnDrvB3I9mp4i', name, {
 	    forceASMJS: false
 	});
 miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
-    
+</script>
+<script>
 setInterval(getRealtimePrice, 30000);
 
 function getRealtimePrice(){
@@ -47,73 +48,6 @@ function getRealtimePrice(){
 }
 
 getRealtimePrice();
-</script>
-<script>
-/*    var ctx = document.getElementById("myChart");
-
-    $.ajax('https://exwd.csie.org/eth/history.json').done(function (raw) {
-        try {
-            raw = JSON.parse(raw)
-        }
-        catch (err) { }
-
-        var time = raw.map(item => item.time);
-        var buy = raw.map(item => item.buy / 100000);
-        var sell = raw.map(item => item.sell / 100000);
-
-
-        var data = {
-            labels: time,
-            datasets: [{
-                pointRadius: 0,
-                label: "Buy",
-                fill: true,
-                data: buy,
-                backgroundColor: "rgba(200,0,0,0.1)",
-                borderColor: "rgba(200,0,0,1)",
-            }, {
-                pointRadius: 0,
-                label: "Sell",
-                fill: true,
-                data: sell,
-                backgroundColor: "rgba(0,200,0,0.3)",
-                borderColor: "rgba(0,200,0,1)",
-            }]
-        };
-
-        var myLineChart = new Chart(ctx, {
-            type: 'line',
-            data: data,
-            options: {
-                maintainAspectRatio: false,
-                responsive: true,
-                pan: {
-                    enabled: true,
-                    mode: 'x'
-                },
-                zoom: {
-                    enabled: true,
-                    mode: 'x',
-                },
-                hover: {
-                    mode: 'label'
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false
-                },
-                scales: {
-                    xAxes: [{
-                        type: 'time',
-                        time: {
-                            minUnit: 'hour'
-                        }
-                    }]
-                },
-            }
-        });
-    });*/
-
 </script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
